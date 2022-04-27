@@ -11,14 +11,15 @@ namespace FolderMaker
             try
             {
                 SettingsManager.SetAppSettings();
-                Dialog.HelpCommand();
-                while (true)
+                if (args.Length < 1)
                 {
-                    if (args.Length < 1)
+                    Dialog.HelpCommand();
+                    while (true)
                         Dialog.UserDialog();
-                    else
-                        FolderManager.CreateFolders(args);
                 }
+                else
+                    FolderManager.CreateFolders(args);
+
             }
             catch (Exception ex)
             {
